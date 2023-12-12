@@ -16,7 +16,6 @@ struct Card {
     Card* right;
 };
 
-// Function to create a new card node
 Card* createCard(string owner, string phoneNumber, string time) {
     Card* newCard = new Card;
     newCard->owner = owner;
@@ -28,7 +27,6 @@ Card* createCard(string owner, string phoneNumber, string time) {
     return newCard;
 }
 
-// Function to insert a card into the binary tree
 Card* insertCard(Card* root, string owner, string phoneNumber, string time) {
     if (root == nullptr) {
         return createCard(owner, phoneNumber, time);
@@ -44,7 +42,6 @@ Card* insertCard(Card* root, string owner, string phoneNumber, string time) {
     return root;
 }
 
-// Function to display the entire card file (inorder traversal)
 void displayCardFile(Card* root) {
     if (root != nullptr) {
         displayCardFile(root->left);
@@ -55,7 +52,6 @@ void displayCardFile(Card* root) {
     }
 }
 
-// Function to search for a card by phone number
 Card* searchCard(Card* root, string phoneNumber, string time) {
     if (root == nullptr || root->phoneNumber == phoneNumber || root->time == time) {
         return root;
@@ -68,13 +64,11 @@ Card* searchCard(Card* root, string phoneNumber, string time) {
     return searchCard(root->right, phoneNumber, time);
 }
 
-// Function to update the payment status of a card
 void updatePaymentStatus(Card* card) {
     card->paymentStatus = true;
     cout << "Payment status updated. Telephone conversation paid." << endl;
 }
 
-// Function to write the card file to a text file (inorder traversal)
 void writeCardFileToFile(Card* root, ofstream& file) {
     if (root != nullptr) {
         writeCardFileToFile(root->left, file);
@@ -84,7 +78,6 @@ void writeCardFileToFile(Card* root, ofstream& file) {
     }
 }
 
-// Function to write the card file to a text file
 void writeCardFile(Card* root, const string& filename) {
     ofstream file(filename);
     if (file.is_open()) {
@@ -158,10 +151,6 @@ int main() {
         cout << endl;
     }
     writeCardFile(cardFile, filename);
-    // Deallocate memory
-    // Function to deallocate memory of the binary tree
-    // Use this function if you want to free the memory before exiting the program
-    // Comment this out if you don't want to deallocate memory
 
     //deallocateMemory(cardFile);
 
